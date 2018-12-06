@@ -19,8 +19,6 @@ library(socviz)
 ```
 
 
-## Show the Right Numbers
-
 ```{r}
 
 ```

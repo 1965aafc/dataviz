@@ -18,9 +18,9 @@ library(ggrepel)
 library(socviz)
 ```
 
-# Supplementary Material
 
-### The basics of accessing and selecting things
+
+## The basics of accessing and selecting things
 
 ```{r}
 my_numbers <- c(1, 2, 3, 1, 3, 5, 25)

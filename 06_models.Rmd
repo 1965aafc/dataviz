@@ -17,7 +17,6 @@ library(tidyverse)
 library(socviz)
 ```
 
-# Work with Models
 
 ```{r model1}
 p <- ggplot(data = gapminder,

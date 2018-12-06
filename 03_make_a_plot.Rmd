@@ -16,7 +16,6 @@ library(tidyverse)
 library(socviz)
 ```
 
-# Make a Plot
 
 ## Tidy Data
 

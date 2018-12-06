@@ -18,7 +18,6 @@ library(ggrepel)
 library(socviz)
 ```
 
-# Refining Your Plots
 
 ```{r}
 head(asasec)

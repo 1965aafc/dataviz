@@ -16,8 +16,6 @@ library(tidyverse)
 library(socviz)
 ```
 
-# Get Started
-
 A code chunk:
 
 ```{r}

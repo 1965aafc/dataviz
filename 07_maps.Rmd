@@ -18,7 +18,6 @@ library(ggrepel)
 library(socviz)
 ```
 
-# Draw Maps
 
 ## Map U.S. state-level data
 

@@ -17,9 +17,8 @@ library(tidyverse)
 library(socviz)
 ```
 
-## Graph Tables, Make Labels, Add Notes
 
-### Dplyr pipelines
+## Dplyr pipelines
 
 ```{r pipeline}
 
@@ -61,7 +60,7 @@ p + geom_col(position = "dodge2") +
     facet_grid(~ bigregion)      
 ```
 
-### Continuous variables by category
+## Continuous variables by category
 
 ```{r }
 organdata %>% select(1:6) %>% sample_n(size = 10)      
@@ -190,7 +189,7 @@ p + geom_pointrange(mapping = aes(ymin = donors_mean - donors_sd,
      labs(x= "", y= "Donor Procurement Rate") + coord_flip()      
 ```
 
-### Plot text directly
+## Plot text directly
 
 ```{r }
 p <- ggplot(data = by_country,
@@ -237,7 +236,7 @@ p + geom_hline(yintercept = 0.5, size = 1.4, color = "gray80") +
          caption = p_caption)      
 ```
 
-### Selective labels
+## Selective labels
 
 ```{r }
 p <- ggplot(data = by_country,
@@ -271,7 +270,7 @@ p + geom_point() +
 ```
 
 
-### Arbitrary annotation
+## Arbitrary annotation
 
 ```{r }
 p <- ggplot(data = organdata, mapping = aes(x = roads, y = donors))
@@ -292,7 +291,7 @@ p + geom_point() +
 ```
 
 
-### Scales and Guides
+## Scales and Guides
 
 ```{r }
 
