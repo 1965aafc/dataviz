@@ -13,7 +13,7 @@ Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word docu
 
 When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. A *code chunk* is a specially delimited section of the file. You can add one by moving the cursor to a blank line choosing Code > Insert Chunk from the RStudio menu. When you do, an empty chunk will appear in your file.
 
-```{r}
+```{r 01-introduction-1}
 
 ```
 
@@ -37,7 +37,7 @@ Here, the braces at the start of the code chunk have some additional options set
 
 If you have not installed the required libraries yet, make sure you have an internet connection and install them now.
 
-```{r, eval = FALSE, echo = TRUE}
+```{r 01-introduction-2, eval = FALSE, echo = TRUE}
 ## To install these packages, change eval = FALSE to eval = TRUE 
 ## in the line above. You only need to do this once. Alternatively, 
 ## copy the code below and paste it into the Console window.
@@ -65,7 +65,7 @@ The remainder of this document contains topic headings and an empty code chunk t
 
 ## Why look at Data?
 
-```{r }
+```{r 01-introduction-3 }
       
 ```
 

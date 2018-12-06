@@ -19,41 +19,41 @@ library(socviz)
 
 ## Tidy Data
 
-```{r}
+```{r 03-make-a-plot-1}
 
 ```
 
 ## Mappings link data to things you see
 
-```{r}
+```{r 03-make-a-plot-2}
 gapminder
 ```
 
 
-```{r}
+```{r 03-make-a-plot-3}
 p <- ggplot(data = gapminder)
 ```
 
 
-```{r}
+```{r 03-make-a-plot-4}
 p <- ggplot(data = gapminder,
             mapping = aes(x = gdpPercap,
                           y = lifeExp))
 ```
 
 
-```{r, fig.cap='This empty plot has no geoms.', fig.width=8, fig.height=5}
+```{r 03-make-a-plot-5, fig.cap='This empty plot has no geoms.', fig.width=8, fig.height=5}
 p
 ```
 
-```{r, fig.cap='A scatterplot of Life Expectancy vs GDP', fig.width=8, fig.height=5}
+```{r 03-make-a-plot-6, fig.cap='A scatterplot of Life Expectancy vs GDP', fig.width=8, fig.height=5}
 p + geom_point() 
 ```
 
 
 ## Build your plots layer by layer
 
-```{r, fig.cap='Life Expectancy vs GDP, using a smoother.', fig.width=8, fig.height=5}
+```{r 03-make-a-plot-7, fig.cap='Life Expectancy vs GDP, using a smoother.', fig.width=8, fig.height=5}
 
 p <- ggplot(data = gapminder,
             mapping = aes(x = gdpPercap,
@@ -62,7 +62,7 @@ p + geom_smooth()
 
 ```
 
-```{r, fig.cap='Life Expectancy vs GDP, showing both points and a GAM smoother.', fig.width=8, fig.height=5}
+```{r 03-make-a-plot-8, fig.cap='Life Expectancy vs GDP, showing both points and a GAM smoother.', fig.width=8, fig.height=5}
 
 p <- ggplot(data = gapminder,
             mapping = aes(x = gdpPercap,
@@ -71,7 +71,7 @@ p + geom_point() + geom_smooth()
 
 ```
 
-```{r, fig.cap='Life Expectancy vs GDP, points and an ill-advised linear fit.', fig.width=8, fig.height=5}
+```{r 03-make-a-plot-9, fig.cap='Life Expectancy vs GDP, points and an ill-advised linear fit.', fig.width=8, fig.height=5}
 p <- ggplot(data = gapminder,
             mapping = aes(x = gdpPercap,
                           y=lifeExp))
@@ -79,7 +79,7 @@ p + geom_point() + geom_smooth(method = "lm")
 ```
 
 
-```{r, fig.cap='Life Expectancy vs GDP scatterplot, with a GAM smoother and a log scale on the x-axis.', fig.width=8, fig.height=5}
+```{r 03-make-a-plot-10, fig.cap='Life Expectancy vs GDP scatterplot, with a GAM smoother and a log scale on the x-axis.', fig.width=8, fig.height=5}
 
 p <- ggplot(data = gapminder,
             mapping = aes(x = gdpPercap,
@@ -90,7 +90,7 @@ p + geom_point() +
 
 ```
 
-```{r, fig.cap='Life Expectancy vs GDP scatterplot, with a GAM smoother and a log scale on the x-axis, with better labels on the tick marks.', fig.width=8, fig.height=5}
+```{r 03-make-a-plot-11, fig.cap='Life Expectancy vs GDP scatterplot, with a GAM smoother and a log scale on the x-axis, with better labels on the tick marks.', fig.width=8, fig.height=5}
 
 p <- ggplot(data = gapminder, mapping = aes(x = gdpPercap, y=lifeExp))
 p + geom_point() +
@@ -101,7 +101,7 @@ p + geom_point() +
 
 ## Mapping aesthetics vs setting them
 
-```{r, fig.cap='What has gone wrong here?', fig.width=8, fig.height=5}
+```{r 03-make-a-plot-12, fig.cap='What has gone wrong here?', fig.width=8, fig.height=5}
 
 p <- ggplot(data = gapminder,
             mapping = aes(x = gdpPercap,
@@ -113,7 +113,7 @@ p + geom_point() +
 ```
 
 
-```{r, fig.cap='Setting the color attribute of the points directly.', fig.width=8, fig.height=5}
+```{r 03-make-a-plot-13, fig.cap='Setting the color attribute of the points directly.', fig.width=8, fig.height=5}
 
 p <- ggplot(data = gapminder,
             mapping = aes(x = gdpPercap,
@@ -123,7 +123,7 @@ p + geom_point(color = "purple") +
     scale_x_log10()
 ```
 
-```{r, fig.cap='Setting some other arguments.', fig.width=8, fig.height=5, fig.margin=TRUE}
+```{r 03-make-a-plot-14, fig.cap='Setting some other arguments.', fig.width=8, fig.height=5, fig.margin=TRUE}
 
 p <- ggplot(data = gapminder,
             mapping = aes(x = gdpPercap,
@@ -134,7 +134,7 @@ p + geom_point(alpha = 0.3) +
 ```
 
 
-```{r, fig.cap='A more polished plot of Life Expectancy vs GDP.', fig.width=8, fig.height=5.25, layout = 'l-page'}
+```{r 03-make-a-plot-15, fig.cap='A more polished plot of Life Expectancy vs GDP.', fig.width=8, fig.height=5.25, layout = 'l-page'}
 
 p <- ggplot(data = gapminder, mapping = aes(x = gdpPercap, y=lifeExp))
 p + geom_point(alpha = 0.3) + geom_smooth(method = "gam") +
@@ -147,7 +147,7 @@ p + geom_point(alpha = 0.3) + geom_smooth(method = "gam") +
 
 
 
-```{r, fig.cap='Mapping the continent variable to the color aesthetic.', fig.width=8.5, fig.height=5}
+```{r 03-make-a-plot-16, fig.cap='Mapping the continent variable to the color aesthetic.', fig.width=8.5, fig.height=5}
 
 p <- ggplot(data = gapminder,
             mapping = aes(x = gdpPercap,
@@ -158,7 +158,7 @@ p + geom_point() +
     scale_x_log10()
 ```
 
-```{r, fig.cap='Mapping the continent variable to the color aesthetic, and correcting the error bars using the fill aesthetic.', fig.width=8.5, fig.height=5}
+```{r 03-make-a-plot-17, fig.cap='Mapping the continent variable to the color aesthetic, and correcting the error bars using the fill aesthetic.', fig.width=8.5, fig.height=5}
 
 p <- ggplot(data = gapminder,
             mapping = aes(x = gdpPercap,
@@ -172,7 +172,7 @@ p + geom_point() +
 
 ## Aesthetics can be mapped per geom
 
-```{r, fig.cap='Mapping aesthetics on a per-geom basis. Here color is mapped to continent for the points but not the smoother.', fig.width=8.5, fig.height=5}
+```{r 03-make-a-plot-18, fig.cap='Mapping aesthetics on a per-geom basis. Here color is mapped to continent for the points but not the smoother.', fig.width=8.5, fig.height=5}
 
 p <- ggplot(data = gapminder, mapping = aes(x = gdpPercap, y = lifeExp))
 p + geom_point(mapping = aes(color = continent)) +
@@ -181,7 +181,7 @@ p + geom_point(mapping = aes(color = continent)) +
 ```
 
 
-```{r, fig.cap='Mapping a continuous variable to color.', out.width="100%", fig.width=8.5, fig.height=5}
+```{r 03-make-a-plot-19, fig.cap='Mapping a continuous variable to color.', out.width="100%", fig.width=8.5, fig.height=5}
 
 p <- ggplot(data = gapminder,
             mapping = aes(x = gdpPercap,
@@ -197,16 +197,16 @@ knitr::opts_chunk$set(fig.width=8, fig.height=5)
 ```
 
 
-```{r, echo=TRUE, eval=FALSE}
+```{r 03-make-a-plot-20, echo=TRUE, eval=FALSE}
 ggsave(filename = "figures/my_figure.png")
 ```
 
 
-```{r}
+```{r 03-make-a-plot-21}
 here() 
 ```
 
-```{r}
+```{r 03-make-a-plot-22}
 
 p_out <- p + geom_point(mapping = aes(color = log(pop))) +
     scale_x_log10()

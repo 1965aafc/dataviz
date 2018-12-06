@@ -83,24 +83,24 @@ p1 + scale_color_manual(name = "Models", values = model_colors) +
 
 ## Look inside model objects
 
-```{r, echo=FALSE}
+```{r 06-models-1, echo=FALSE}
 str(gapminder, strict.width = "wrap", nchar.max = 32, vec.len=1)
 ```
 
 
-```{r}
+```{r 06-models-2}
 out <- lm(formula = lifeExp ~ gdpPercap + pop + continent,
           data = gapminder)
 ```
 
-```{r}
+```{r 06-models-3}
 summary(out)
 ```
 
 
 ## Generate predictions to graph
 
-```{r}
+```{r 06-models-4}
 
 min_gdp <- min(gapminder$gdpPercap)
 max_gdp <- max(gapminder$gdpPercap)
@@ -118,7 +118,7 @@ head(pred_df)
 ```
 
 
-```{r}
+```{r 06-models-5}
 
 pred_out <- predict(object = out,
                     newdata = pred_df,
@@ -127,7 +127,7 @@ head(pred_out)
 
 ```
 
-```{r}
+```{r 06-models-6}
 
 pred_df <- cbind(pred_df, pred_out)
 head(pred_df)
@@ -135,7 +135,7 @@ head(pred_df)
 ```
 
 
-```{r}
+```{r 06-models-7}
 
 p <- ggplot(data = subset(pred_df, continent %in% c("Europe", "Africa")),
             aes(x = gdpPercap,
@@ -159,18 +159,18 @@ p + geom_point(data = subset(gapminder,
 
 ## Tidy model objects with broom
 
-```{r}
+```{r 06-models-8}
 library(broom)
 ```
 
-```{r}
+```{r 06-models-9}
 out_comp <- tidy(out)
 out_comp %>% round_df()
 
 ```
 
 
-```{r}
+```{r 06-models-10}
 p <- ggplot(out_comp, mapping = aes(x = term,
                                     y = estimate))
 
@@ -178,18 +178,18 @@ p + geom_point() + coord_flip()
 ```
 
 
-```{r}
+```{r 06-models-11}
 out_conf <- tidy(out, conf.int = TRUE)
 out_conf %>% round_df()
 ```
 
-```{r}
+```{r 06-models-12}
 out_conf <- subset(out_conf, term %nin% "(Intercept)")
 out_conf$nicelabs <- prefix_strip(out_conf$term, "continent")
 ```
 
 
-```{r}
+```{r 06-models-13}
 
 p <- ggplot(out_conf, mapping = aes(x = reorder(nicelabs, estimate),
                                     y = estimate, ymin = conf.low, ymax = conf.high))
@@ -200,18 +200,18 @@ p + geom_pointrange() + coord_flip() + labs(x="", y="OLS Estimate")
 
 ### Get observation-level statistics with augment()
 
-```{r}
+```{r 06-models-14}
 out_aug <- augment(out)
 head(out_aug) %>% round_df()
 ```
 
 
-```{r}
+```{r 06-models-15}
 out_aug <- augment(out, data = gapminder)
 head(out_aug) %>% round_df()
 ```
 
-```{r}
+```{r 06-models-16}
 
 p <- ggplot(data = out_aug,
             mapping = aes(x = .fitted, y = .resid))
@@ -222,12 +222,12 @@ p + geom_point()
 
 ### Get model-level statistics with glance()
 
-```{r}
+```{r 06-models-17}
 glance(out) %>% round_df()
 ```
 
 
-```{r}
+```{r 06-models-18}
 library(survival)
 
 out_cph <- coxph(Surv(time, status) ~ age + sex, data = lung)
@@ -236,7 +236,7 @@ out_surv <- survfit(out_cph)
 ```
 
 
-```{r}
+```{r 06-models-19}
 out_tidy <- tidy(out_surv)
 
 p <- ggplot(data = out_tidy, mapping = aes(time, estimate))
@@ -246,16 +246,16 @@ p + geom_line() +
 
 ## Grouped analysis and list columns
 
-```{r}
+```{r 06-models-20}
 eu77 <- gapminder %>% filter(continent == "Europe", year == 1977)
 ```
 
-```{r}
+```{r 06-models-21}
 fit <- lm(lifeExp ~ log(gdpPercap), data = eu77)
 summary(fit)
 ```
 
-```{r}
+```{r 06-models-22}
 
 out_le <- gapminder %>%
     group_by(continent, year) %>%
@@ -266,18 +266,18 @@ out_le
 ```
 
 
-```{r}
+```{r 06-models-23}
 out_le %>% filter(continent == "Europe" & year == 1977) %>% unnest()
 ```
 
 
-```{r, echo = FALSE}
+```{r 06-models-24, echo = FALSE}
 old_digits <- getOption("digits")
 options(digits = 3)
 ```
 
 
-```{r}
+```{r 06-models-25}
 
 fit_ols <- function(df) {
     lm(lifeExp ~ log(gdpPercap), data = df)
@@ -293,7 +293,7 @@ out_le
 ```
 
 
-```{r}
+```{r 06-models-26}
 
 fit_ols <- function(df) {
     lm(lifeExp ~ log(gdpPercap), data = df)
@@ -312,11 +312,11 @@ out_tidy %>% sample_n(5)
 
 ```
 
-```{r, echo = FALSE}
+```{r 06-models-27, echo = FALSE}
 options(digits = old_digits)
 ```
 
-```{r, fig.height=4, fig.width=10, layout = '1-page'}
+```{r 06-models-28, fig.height=4, fig.width=10, layout = '1-page'}
 
 p <- ggplot(data = out_tidy,
             mapping = aes(x = year, y = estimate,
@@ -335,12 +335,12 @@ p + geom_pointrange(position = position_dodge(width = 1)) +
 
 Note that calculating marginal effects can take some time!
 
-```{r}
+```{r 06-models-29}
 library(margins)
 ```
 
 
-```{r}
+```{r 06-models-30}
 
 gss_sm$polviews_m <- relevel(gss_sm$polviews, ref = "Moderate")
 
@@ -350,13 +350,13 @@ summary(out_bo)
 ```
 
 
-```{r}
+```{r 06-models-31}
 bo_m <- margins(out_bo)
 summary(bo_m)
 ```
 
 
-```{r}
+```{r 06-models-32}
 bo_gg <- as_tibble(summary(bo_m))
 prefixes <- c("polviews_m", "sex")
 bo_gg$factor <- prefix_strip(bo_gg$factor, prefixes)
@@ -366,7 +366,7 @@ bo_gg %>% select(factor, AME, lower, upper)
 ```
 
 
-```{r}
+```{r 06-models-33}
 p <- ggplot(data = bo_gg, aes(x = reorder(factor, AME),
                               y = AME, ymin = lower, ymax = upper))
 
@@ -377,7 +377,7 @@ p + geom_hline(yintercept = 0, color = "gray80") +
 ```
 
 
-```{r}
+```{r 06-models-34}
 pv_cp <- cplot(out_bo, x = "sex", draw = FALSE)
 
 p <- ggplot(data = pv_cp, aes(x = reorder(xvals, yvals),
@@ -392,13 +392,13 @@ p + geom_hline(yintercept = 0, color = "gray80") +
 
 ## Plots from complex surveys
 
-```{r}
+```{r 06-models-35}
 library(survey)
 library(srvyr)
 ```
 
 
-```{r}
+```{r 06-models-36}
 options(survey.lonely.psu = "adjust")
 options(na.action="na.pass")
 
@@ -507,7 +507,7 @@ out <- lm(formula = lifeExp ~ log(gdpPercap) + pop + continent, data = gapminder
 ```
 
 
-```{r}
+```{r 06-models-37}
 plot(out, which = c(1,2), ask=FALSE)
 ```
 

@@ -21,14 +21,14 @@ library(socviz)
 
 ## Map U.S. state-level data
 
-```{r}
+```{r 07-maps-1}
 election %>% select(state, total_vote,
                     r_points, pct_trump, party, census) %>%
     sample_n(5)
 ```
 
 
-```{r, fig.width=4, fig.height=10}
+```{r 07-maps-2, fig.width=4, fig.height=10}
 
 # Hex color codes for Dem Blue and Rep Red
 party_colors <- c("#2E74C0", "#CB454A") 
@@ -54,7 +54,7 @@ p3 + facet_wrap(~ census, ncol=1, scales="free_y") +
 ```
 
 
-```{r}
+```{r 07-maps-3}
 library(maps)
 us_states <- map_data("state")
 head(us_states)
@@ -62,7 +62,7 @@ dim(us_states)
 ```
 
 
-```{r }
+```{r 07-maps-4 }
 
 p <- ggplot(data = us_states,
             mapping = aes(x = long, y = lat,
@@ -73,7 +73,7 @@ p + geom_polygon(fill = "white", color = "black")
 ```
 
 
-```{r, fig.cap='Coloring the states', out.width="100%", fig.width=6, fig.height=5}
+```{r 07-maps-5, fig.cap='Coloring the states', out.width="100%", fig.width=6, fig.height=5}
 
 p <- ggplot(data = us_states,
             aes(x = long, y = lat,
@@ -83,7 +83,7 @@ p + geom_polygon(color = "gray90", size = 0.1) + guides(fill = FALSE)
 
 ```
 
-```{r, fig.cap='Improving the projection', out.width="100%", fig.width=6, fig.height=5}
+```{r 07-maps-6, fig.cap='Improving the projection', out.width="100%", fig.width=6, fig.height=5}
 
 p <- ggplot(data = us_states,
             mapping = aes(x = long, y = lat,
@@ -95,7 +95,7 @@ p + geom_polygon(color = "gray90", size = 0.1) +
 
 ```
 
-```{r}
+```{r 07-maps-7}
 
 election$region <- tolower(election$state)
 us_states_elec <- left_join(us_states, election)
@@ -103,7 +103,7 @@ us_states_elec <- left_join(us_states, election)
 ```
 
 
-```{r, fig.cap='Mapping the results', out.width="100%", fig.width=6, fig.height=5}
+```{r 07-maps-8, fig.cap='Mapping the results', out.width="100%", fig.width=6, fig.height=5}
 
 p <- ggplot(data = us_states_elec,
             aes(x = long, y = lat,
@@ -115,7 +115,7 @@ p + geom_polygon(color = "gray90", size = 0.1) +
 ```
 
 
-```{r}
+```{r 07-maps-9}
 
 theme_map <- function(base_size=9, base_family="") {
     require(grid)
@@ -151,7 +151,7 @@ p2 + theme_map()
 ```
 
 
-```{r, fig.cap='Two versions of Percent Trump by State', out.width="100%", fig.width=6, fig.height=5, fig.show = 'hold'}
+```{r 07-maps-10, fig.cap='Two versions of Percent Trump by State', out.width="100%", fig.width=6, fig.height=5, fig.show = 'hold'}
 
 p0 <- ggplot(data = us_states_elec,
              mapping = aes(x = long, y = lat, group = group, fill = pct_trump))
@@ -168,7 +168,7 @@ p2 + theme_map() + labs(fill = "Percent")
 ```
 
 
-```{r, fig.cap='Two views of Trump vs Clinton share: a white midpoint, and a Purple America version.', out.width="100%", fig.width=6, fig.height=5, fig.show = "hold"}
+```{r 07-maps-11, fig.cap='Two views of Trump vs Clinton share: a white midpoint, and a Purple America version.', out.width="100%", fig.width=6, fig.height=5, fig.show = "hold"}
 
 p0 <- ggplot(data = us_states_elec,
              mapping = aes(x = long, y = lat, group = group, fill = d_points))
@@ -187,7 +187,7 @@ p3 + theme_map() + labs(fill = "Percent")
 ```
 
 
-```{r, fig.cap='A Purple America version of Trump vs Clinton that excludes results from Washington, DC.', out.width="100%", fig.width=6, fig.height=5}
+```{r 07-maps-12, fig.cap='A Purple America version of Trump vs Clinton that excludes results from Washington, DC.', out.width="100%", fig.width=6, fig.height=5}
 
 p0 <- ggplot(data = subset(us_states_elec,
                            region %nin% "district of columbia"),
@@ -257,7 +257,7 @@ p2 + labs(fill = "US Population, Percent Black") +
 ```
 
 
-```{r}
+```{r 07-maps-13}
 
 orange_pal <- RColorBrewer::brewer.pal(n = 6, name = "Oranges")
 orange_pal
@@ -304,7 +304,7 @@ pop_p2 + labs(title = "Reverse-coded Population Density",
 
 ## Statebins
 
-```{r, fig.cap='Statebins of the election results. We omit DC from the Clinton map to prevent the scale becoming unbalanced.', warning = FALSE, out.width = "100%", fig.show = "hold", fig.margin = TRUE, fig.width = 5, fig.height = 4, tidy = FALSE}
+```{r 07-maps-14, fig.cap='Statebins of the election results. We omit DC from the Clinton map to prevent the scale becoming unbalanced.', warning = FALSE, out.width = "100%", fig.show = "hold", fig.margin = TRUE, fig.width = 5, fig.height = 4, tidy = FALSE}
 library(statebins)
 
 statebins_continuous(state_data = election, state_col = "state",
@@ -320,7 +320,7 @@ statebins_continuous(state_data = subset(election, st %nin% "DC"),
 ```
 
 
-```{r, fig.cap='Manually specifying colors for statebins.', warning = FALSE, out.width = "100%", fig.show = "hold", fig.margin = TRUE, fig.width = 5, fig.height = 4, tidy = FALSE}
+```{r 07-maps-15, fig.cap='Manually specifying colors for statebins.', warning = FALSE, out.width = "100%", fig.show = "hold", fig.margin = TRUE, fig.width = 5, fig.height = 4, tidy = FALSE}
 
 election <- election %>% mutate(color = recode(party, Republican = "darkred",
                                                Democrat = "royalblue"))
@@ -341,12 +341,12 @@ statebins(state_data = election,
 
 ## Small-multiple maps
 
-```{r}
+```{r 07-maps-16}
 opiates
 ```
 
 
-```{r}
+```{r 07-maps-17}
 
 opiates$region <- tolower(opiates$state)
 opiates_map <- left_join(us_states, opiates)
@@ -378,7 +378,7 @@ p2 + theme_map() + facet_wrap(~ year, ncol = 3) +
 
 ## Is your data really spatial?
 
-```{r, fig.cap='All the states at once.', out.width="100%", fig.width=11, fig.height=8.5}
+```{r 07-maps-18, fig.cap='All the states at once.', out.width="100%", fig.width=11, fig.height=8.5}
 
 p <- ggplot(data = opiates,
             mapping = aes(x = year, y = adjusted,
@@ -403,7 +403,7 @@ p2 <- p1 + geom_smooth(mapping = aes(group = division_name),
 
 
 
-```{r, opiates-3}
+```{r 07-maps-19, opiates-3}
 p3 <- p2 + geom_text_repel(data = subset(opiates,
                                          year == max(year) & abbr !="DC"),
                      mapping = aes(x = year, y = adjusted, label = abbr),

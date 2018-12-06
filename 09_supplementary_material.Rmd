@@ -22,21 +22,21 @@ library(socviz)
 
 ## The basics of accessing and selecting things
 
-```{r}
+```{r 09-supplementary-material-1}
 my_numbers <- c(1, 2, 3, 1, 3, 5, 25)
 your_numbers <- c(5, 31, 71, 1, 3, 21, 6)
 ```
 
-```{r}
+```{r 09-supplementary-material-2}
 my_numbers[4]
 my_numbers[7]
 ```
 
-```{r}
+```{r 09-supplementary-material-3}
 my_numbers[2:4]
 ```
 
-```{r}
+```{r 09-supplementary-material-4}
 my_tb <- tibble(
     mine = c(1,4,5, 8:11),
     yours = c(3,20,16, 34:31))
@@ -45,40 +45,40 @@ class(my_tb)
 my_tb
 ```
 
-```{r}
+```{r 09-supplementary-material-5}
 my_tb[3,1] # Row 3 Col 1
 my_tb[1,2] # Row 1, Col 2 
 ```
 
 
-```{r}
+```{r 09-supplementary-material-6}
 my_tb[3,"mine"] # Row 3 Col 1
 my_tb[1,"yours"] # Row 1, Col 2 
 ```
 
-```{r}
+```{r 09-supplementary-material-7}
 my_tb[3,"mine"] # Row 3 Col 1
 my_tb[1,"yours"] # Row 1, Col 2 
 ```
 
 
 
-```{r}
+```{r 09-supplementary-material-8}
 my_tb[,"mine"] # All rows, Col 1
 ```
 
 
-```{r}
+```{r 09-supplementary-material-9}
 my_tb[4,] # Row 4, all cols
 ```
 
 
-```{r}
+```{r 09-supplementary-material-10}
 my_tb$mine
 ```
 
 
-```{r}
+```{r 09-supplementary-material-11}
 out <- lm(mine ~ yours, data = my_tb)
 
 out$coefficients
@@ -89,23 +89,23 @@ out$qr$rank # nested
 ```
 
 
-```{r}
+```{r 09-supplementary-material-12}
 my_tb$ours <- my_tb$mine + my_tb$yours
 my_tb
 ```
 
 ### Tidy data
 
-```{r}
+```{r 09-supplementary-material-13}
 knitr::kable(preg, caption="Some untidy data.", booktabs = TRUE)
 ```
 
-```{r}
+```{r 09-supplementary-material-14}
 knitr::kable(preg2,
              caption="The same data, still untidy, but in a different way.", booktabs = TRUE)
 ```
 
-```{r}
+```{r 09-supplementary-material-15}
 preg3 <- preg %>% 
   gather(treatment, n, treatmenta:treatmentb) %>%
   mutate(treatment = gsub("treatment", "", treatment)) %>%
@@ -115,11 +115,11 @@ knitr::kable(preg3,
 ```
 
 
-```{r, echo=FALSE, message=FALSE}
+```{r 09-supplementary-material-16, echo=FALSE, message=FALSE}
 edu
 ```
 
-```{r, echo=FALSE, message=FALSE, tidy = FALSE}
+```{r 09-supplementary-material-17, echo=FALSE, message=FALSE, tidy = FALSE}
 edu_t <- gather(data = edu,
                 key = school,
                 value = freq,
@@ -127,7 +127,7 @@ edu_t <- gather(data = edu,
 ```
 
 
-```{r, echo=TRUE, message=FALSE, tidy = FALSE}
+```{r 09-supplementary-material-18, echo=TRUE, message=FALSE, tidy = FALSE}
 edu_t <- gather(data = edu,
                 key = school,
                 value = freq,
@@ -141,13 +141,13 @@ tail(edu_t)
 
 ### Date formats
 
-```{r, fig.caption="A bad date.", fig.cap = "A bad date."}
+```{r 09-supplementary-material-19, fig.caption="A bad date.", fig.cap = "A bad date."}
 p <- ggplot(data = bad_date, aes(x = date, y = N))
 p + geom_line()
 ```
 
 
-```{r, echo = TRUE, fig.width = 5, fig.height = 4, fig.cap = "Still bad."}
+```{r 09-supplementary-material-20, echo = TRUE, fig.width = 5, fig.height = 4, fig.cap = "Still bad."}
 
 bad_date2 <- rbind(bad_date, bad_date)
 
@@ -157,7 +157,7 @@ p + geom_line()
 ```
 
 
-```{r}
+```{r 09-supplementary-material-21}
 # install.packages("lubridate")
 library(lubridate)
 
@@ -166,7 +166,7 @@ head(bad_date)
 
 ```
 
-```{r, fig.cap="Much better.", out.width="100%", fig.height=4, fig.width=6, fig.margin=TRUE}
+```{r 09-supplementary-material-22, fig.cap="Much better.", out.width="100%", fig.height=4, fig.width=6, fig.margin=TRUE}
 p <- ggplot(data = bad_date, aes(x = date, y = N))
 p + geom_line()
 ```
@@ -174,7 +174,7 @@ p + geom_line()
 
 ### Year-only dates
 
-```{r, eval = FALSE}
+```{r 09-supplementary-material-23, eval = FALSE}
 
 url <- "https://cdn.rawgit.com/kjhealy/viz-organdata/master/organdonation.csv"
 
@@ -183,14 +183,14 @@ bad_year %>% select(1:3) %>% sample_n(10)
 
 ```
 
-```{r}
+```{r 09-supplementary-material-24}
 
 bad_year <- read_csv(file = "data/organdonation.csv")
 bad_year %>% select(1:3) %>% sample_n(10)
 
 ```
 
-```{r, fig.cap="Integer year shown with a decimal point.",  fig.height = 4, fig.width = 5}
+```{r 09-supplementary-material-25, fig.cap="Integer year shown with a decimal point.",  fig.height = 4, fig.width = 5}
 
 p <- ggplot(data = bad_year, aes(x = year, y = donors))
 p + geom_point()
@@ -198,7 +198,7 @@ p + geom_point()
 ```
 
 
-```{r}
+```{r 09-supplementary-material-26}
 bad_year$year <- int_to_year(bad_year$year)
 bad_year %>% select(1:3)
 ```
@@ -251,7 +251,7 @@ plot_section <- function(section="Culture", x = "Year",
 
 ```
 
-```{r, fig.cap='Using a function to plot your results.', out.width="50%", fig.width=4, fig.height=3, fig.show = "hold"}
+```{r 09-supplementary-material-27, fig.cap='Using a function to plot your results.', out.width="50%", fig.width=4, fig.height=3, fig.show = "hold"}
 
 plot_section("Rationality")
 plot_section("Sexualities", smooth = TRUE)
@@ -286,7 +286,7 @@ plot_section <- function(section="Culture", x = "Year",
 
 ```
 
-```{r, fig.cap='Our custom function can now pass arguments along to fit different smoothers to Section membership data.', out.width="50%", fig.width=4, fig.height=3, fig.show = "hold"}
+```{r 09-supplementary-material-28, fig.cap='Our custom function can now pass arguments along to fit different smoothers to Section membership data.', out.width="50%", fig.width=4, fig.height=3, fig.show = "hold"}
 
 plot_section("Comm/Urban",
              smooth = TRUE,
@@ -301,7 +301,7 @@ plot_section("Children",
 
 ## Preparing the county-level maps
 
-```{r, eval = FALSE, echo = TRUE}
+```{r 09-supplementary-material-29, eval = FALSE, echo = TRUE}
 
 # You will need to use install.packages() to install
 # these map and GIS libraries if you do not already
@@ -324,7 +324,7 @@ us_counties_aea@data$id <- rownames(us_counties_aea@data)
 ```
 
 
-```{r, eval = FALSE, echo = TRUE}
+```{r 09-supplementary-material-30, eval = FALSE, echo = TRUE}
 
 alaska <- us_counties_aea[us_counties_aea$STATE == "02",]
 alaska <- elide(alaska, rotate=-50)
@@ -344,7 +344,7 @@ us_counties_aea <- rbind(us_counties_aea, alaska, hawaii)
 
 Finally, we tidy the spatial object into a data frame that ggplot can use, and clean up the `id` label by stripping out a prefix from the string. 
 
-```{r, eval = FALSE, echo = TRUE, tidy = FALSE}
+```{r 09-supplementary-material-31, eval = FALSE, echo = TRUE, tidy = FALSE}
 county_map <- tidy(us_counties_aea, region = "GEO_ID")
 county_map$id <- stringr::str_replace(county_map$id,
                                       pattern = "0500000US", replacement = "")
@@ -352,7 +352,7 @@ county_map$id <- stringr::str_replace(county_map$id,
 
 
 
-```{r, eval = FALSE, echo = TRUE, tidy = FALSE}
+```{r 09-supplementary-material-32, eval = FALSE, echo = TRUE, tidy = FALSE}
 county_map <- tidy(us_counties_aea, region = "GEO_ID")
 county_map$id <- stringr::str_replace(county_map$id,
                                       pattern = "0500000US", replacement = "")
@@ -363,12 +363,12 @@ For more detail and code for the merge, see `github.com/kjhealy/us-county`.
 
 ## Plot themes and map themes
 
-```{r, eval = FALSE}
+```{r 09-supplementary-material-33, eval = FALSE}
 devtools::install_github("hrbrmstr/hrbrthemes")
 ```
 
 
-```{r, eval = FALSE, tidy = FALSE}
+```{r 09-supplementary-material-34, eval = FALSE, tidy = FALSE}
 
 theme_map <- function(base_size=9, base_family="") {
     require(grid)

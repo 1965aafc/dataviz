@@ -19,7 +19,7 @@ library(socviz)
 ```
 
 
-```{r}
+```{r 04-show-the-right-numbers-1}
 
 ```
 

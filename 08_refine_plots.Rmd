@@ -19,12 +19,12 @@ library(socviz)
 ```
 
 
-```{r}
+```{r 08-refine-plots-1}
 head(asasec)
 ```
 
 
-```{r, fig.height=12, fig.width=14, out.width="100%"}
+```{r 08-refine-plots-2, fig.height=12, fig.width=14, out.width="100%"}
 
 pdf(file = "~/Desktop/asa_sections.pdf", height = 8, width = 12)
 p0 <- ggplot(data = asasec,
@@ -41,7 +41,7 @@ dev.off()
 
 ```
 
-```{r, out.width="100%"}
+```{r 08-refine-plots-3, out.width="100%"}
 
 p <- ggplot(data = subset(asasec, Year == 2014),
             mapping = aes(x = Members, y = Revenues, label = Sname))
@@ -50,7 +50,7 @@ p + geom_point() + geom_smooth()
 
 ```
 
-```{r, fig.height=5, fig.width=6}
+```{r 08-refine-plots-4, fig.height=5, fig.width=6}
 
 p <- ggplot(data = subset(asasec, Year == 2014),
             mapping = aes(x = Members, y = Revenues, label = Sname))
@@ -60,7 +60,7 @@ p + geom_point(mapping = aes(color = Journal)) +
 
 ```
 
-```{r, fig.width=6, fig.height=5}
+```{r 08-refine-plots-5, fig.width=6, fig.height=5}
 
 p0 <- ggplot(data = subset(asasec, Year == 2014),
              mapping = aes(x = Members, y = Revenues, label = Sname))
@@ -74,7 +74,7 @@ p2 <- p1 + geom_text_repel(data=subset(asasec,
 
 ```
 
-```{r, fig.width=6, fig.height=5}
+```{r 08-refine-plots-6, fig.width=6, fig.height=5}
 
 p3 <- p2 + labs(x="Membership",
         y="Revenues",
@@ -91,13 +91,13 @@ p4
 
 ## Use color to your advantage
 
-```{r, fig.cap="RColorBrewer's qualitative palettes.", fig.width=4, fig.height=4}
+```{r 08-refine-plots-7, fig.cap="RColorBrewer's qualitative palettes.", fig.width=4, fig.height=4}
 library(RColorBrewer)
 display.brewer.all(type = "qual")
 ```
 
 
-```{r, fig.cap='Some available palettes in use.', fig.width=5, fig.height=4, fig.show = "hold"}
+```{r 08-refine-plots-8, fig.cap='Some available palettes in use.', fig.width=5, fig.height=4, fig.show = "hold"}
 
 p <- ggplot(data = organdata,
             mapping = aes(x = roads, y = donors, color = world))
@@ -111,7 +111,7 @@ p + geom_point(size = 2) + scale_color_brewer(palette = "Dark2") +
     theme(legend.position = "top")
 ```
 
-```{r, fig.cap='Using a custom color palette.', fig.width=8, fig.height=6}
+```{r 08-refine-plots-9, fig.cap='Using a custom color palette.', fig.width=8, fig.height=6}
 
 cb_palette <- c("#999999", "#E69F00", "#56B4E9", "#009E73",
                 "#F0E442", "#0072B2", "#D55E00", "#CC79A7")
@@ -120,12 +120,12 @@ p4 + scale_color_manual(values = cb_palette)
 
 ```
 
-```{r}
+```{r 08-refine-plots-10}
 Default <- brewer.pal(5, "Set2")
 ```
 
 
-```{r}
+```{r 08-refine-plots-11}
 library(dichromat)
 
 types <- c("deutan", "protan", "tritan")
@@ -139,7 +139,7 @@ color_table <- types %>%
 color_table
 ```
 
-```{r, fig.width=5, fig.height=6, fig.show = "hold", fig.cap = "Comparing a default color palette with an approximation of how the same palette appears to people with one of three kinds of color blindness."}
+```{r 08-refine-plots-12, fig.width=5, fig.height=6, fig.show = "hold", fig.cap = "Comparing a default color palette with an approximation of how the same palette appears to people with one of three kinds of color blindness."}
 color_comp(color_table)
 ```
 
@@ -314,7 +314,7 @@ p + geom_density_ridges(alpha = 0.6, fill = "lightblue", scale = 1.5) +
 
 ### Two y-axes
 
-```{r}
+```{r 08-refine-plots-13}
 head(fredts)
 
 fredts_m <- fredts %>% select(date, sp500_i, monbase_i) %>%
@@ -324,7 +324,7 @@ head(fredts_m)
 ```
 
 
-```{r}
+```{r 08-refine-plots-14}
 
 p <- ggplot(data = fredts_m,
             mapping = aes(x = date, y = score,
@@ -353,7 +353,7 @@ cowplot::plot_grid(p1, p2, nrow = 2, rel_heights = c(0.75, 0.25), align = "v")
 
 ### Redrawing a bad slide
 
-```{r}
+```{r 08-refine-plots-15}
 head(yahoo)
 ```
 
@@ -391,7 +391,7 @@ p + geom_vline(xintercept = 2012) +
 
 ### Saying no to pie
 
-```{r}
+```{r 08-refine-plots-16}
 head(studebt)
 ```
 

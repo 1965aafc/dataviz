@@ -18,7 +18,7 @@ library(socviz)
 
 A code chunk:
 
-```{r}
+```{r 02-get-started-1}
 
 ```
 
@@ -26,7 +26,7 @@ A code chunk:
 
 ### Everything has a name
 
-```{r}
+```{r 02-get-started-2}
 
 ```
 
@@ -44,14 +44,14 @@ my_numbers <- c(1, 2, 3, 1, 3, 5, 25)
 your_numbers <- c(5, 31, 71, 1, 3, 21, 6)
 ```
 
-```{r}
+```{r 02-get-started-3}
 my_numbers
 ```
 
 
 ### You do things using functions
 
-```{r}
+```{r 02-get-started-4}
 my_numbers
 ```
 
@@ -60,22 +60,22 @@ my_numbers
 mean()
 ```
 
-```{r}
+```{r 02-get-started-5}
 mean(x = my_numbers)
 
 mean(x = your_numbers)
 ```
 
-```{r}
+```{r 02-get-started-6}
 mean(my_numbers)
 ```
 
-```{r}
+```{r 02-get-started-7}
 my_summary <- summary(my_numbers)
 ```
 
 
-```{r}
+```{r 02-get-started-8}
 my_summary
 ```
 
@@ -105,7 +105,7 @@ class(summary)
 ```
 
 
-```{r}
+```{r 02-get-started-9}
 my_new_vector <- c(my_numbers, "Apple")
 my_new_vector
 class(my_new_vector)
@@ -153,7 +153,7 @@ Here are three very specific things to watch out for:
   not the beginning. That is, write this:
 
 
-```{r, echo=TRUE, eval=FALSE}
+```{r 02-get-started-10, echo=TRUE, eval=FALSE}
 ggplot(data = mpg, aes(x = displ, y = hwy)) +
     geom_point()
 ```
@@ -161,7 +161,7 @@ ggplot(data = mpg, aes(x = displ, y = hwy)) +
 
 and not this:
 
-```{r, echo=TRUE, eval=FALSE}
+```{r 02-get-started-11, echo=TRUE, eval=FALSE}
 ggplot(data = mpg, aes(x = displ, y = hwy))
 + geom_point()
 ```
@@ -171,7 +171,7 @@ ggplot(data = mpg, aes(x = displ, y = hwy))
 
 Remotely: 
 
-```{r, echo = TRUE, eval = FALSE}
+```{r 02-get-started-12, echo = TRUE, eval = FALSE}
 
 url <- "https://cdn.rawgit.com/kjhealy/viz-organdata/master/organdonation.csv"
 
@@ -181,7 +181,7 @@ organs <- read_csv(file = url)
 
 Or locally:
 
-```{r}
+```{r 02-get-started-13}
 
 organs <- read_csv(file = "data/organdonation.csv")
 
