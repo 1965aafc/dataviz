@@ -2,7 +2,7 @@
 title: "Make a Plot"
 author: "Kieran Healy"
 date: "01-December-2018"
-output: radix::radix_article
+output: html_document
 ---
 
 ## Load Libraries
