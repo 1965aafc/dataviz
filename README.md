@@ -9,7 +9,7 @@ Support files for _[Data Visualization: A Practical Introduction](http://socviz.
 
 ### You should install this material via the `socviz` library
 
-That the contents of this repository are included in the `socviz` library of data and functions that accompanies the book. It can be conveniently extracted from there using `socviz`'s `setup_course_notes()` function. See the [socviz library documentation](https://kjhealy.github.io/socviz/index.html) for more details. 
+The contents of this repository are included in the `socviz` library of data and functions that accompanies the book. They can be conveniently extracted from there using `socviz`'s `setup_course_notes()` function. See the [socviz library documentation](https://kjhealy.github.io/socviz/index.html) for more details. 
 
 ### Using this repository directly
 
