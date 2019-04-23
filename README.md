@@ -2,15 +2,11 @@
 
 ### Kieran Healy
 
-![Book Cover](assets/dv-cover-pupress.jpg)
+## This repository is outdated and not maintained. Please install and use the `socviz` library instead
 
-
-Support files for _[Data Visualization: A Practical Introduction](http://socviz.co)_ and courses taught from it. This repo is an RStudio project and contains a series of R Markdown files organized in parallel to the book's chapters. The R Markdown files contain code to reproduce almost all the figures in the book, along with space for your own notes. A more general note-taking template can be found in the `template/` folder. The contents of this repository can be used directly, but it also comes bundled with the [socviz package](https://kjhealy.github.io/socviz/index.html) and is best accessed from there. 
-
-## You should install and use the `socviz` library instead
+This repository contains support files for _[Data Visualization: A Practical Introduction](http://socviz.co)_ and courses taught from it. It is an RStudio project and contains a series of R Markdown files organized in parallel to the book's chapters. The R Markdown files contain code to reproduce almost all the figures in the book, along with space for your own notes. A more general note-taking template can be found in the `template/` folder. 
 
 The contents of this repository---in updated and imporoved form---are included in the `socviz` library of data and functions that accompanies the book. They can be conveniently extracted from there using `socviz`'s `setup_course_notes()` function. See the [socviz library documentation](https://kjhealy.github.io/socviz/index.html) for more details. This repository is no longer updated or maintained.
-
 
 
 ### About _[Data Visualization: A Practical Introduction](http://socviz.co)_
