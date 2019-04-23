@@ -1,42 +1,19 @@
 # dataviz
 
-## Kieran Healy
+### Kieran Healy
 
 ![Book Cover](assets/dv-cover-pupress.jpg)
 
 
 Support files for _[Data Visualization: A Practical Introduction](http://socviz.co)_ and courses taught from it. This repo is an RStudio project and contains a series of R Markdown files organized in parallel to the book's chapters. The R Markdown files contain code to reproduce almost all the figures in the book, along with space for your own notes. A more general note-taking template can be found in the `template/` folder. The contents of this repository can be used directly, but it also comes bundled with the [socviz package](https://kjhealy.github.io/socviz/index.html) and is best accessed from there. 
 
-### You should install this material via the `socviz` library
+## You should install and use the `socviz` library instead
 
-The contents of this repository are included in the `socviz` library of data and functions that accompanies the book. They can be conveniently extracted from there using `socviz`'s `setup_course_notes()` function. See the [socviz library documentation](https://kjhealy.github.io/socviz/index.html) for more details. 
-
-### Using this repository directly
-
-With R and RStudio installed, as described in the first few pages of the book, students and readers can use this repo via the `usethis` package. 
-
-From the R console, type:
-
-`install.packages("usethis", repos = "http://cran.rstudio.com")`
-
-Then load the library:
-
-`library(usethis)`
-
-And download the contents of this repository with:
-
-`use_course("https://github.com/kjhealy/dataviz/archive/master.zip")`
-
-or, with less typing:
-
-`use_course("goo.gl/jiPYYk")`
-
-Alternatively, scroll up the page and click the green `Clone or download` button, and choose "Download ZIP" to get a zip file of the material here. 
-
-Once you have downloaded everything, you can double-click the `dataviz.Rroj` file, and RStudio will launch a new session. You can then open `01_indtroduction.Rmd` and start following along with the text. 
+The contents of this repository---in updated and imporoved form---are included in the `socviz` library of data and functions that accompanies the book. They can be conveniently extracted from there using `socviz`'s `setup_course_notes()` function. See the [socviz library documentation](https://kjhealy.github.io/socviz/index.html) for more details. This repository is no longer updated or maintained.
 
 
-## About _[Data Visualization: A Practical Introduction](http://socviz.co)_
+
+### About _[Data Visualization: A Practical Introduction](http://socviz.co)_
 
 _Data Visualization: A Practical Introduction_ teaches you data visualization using R and ggplot2 in a clear, sensible, and reproducible way. It is published by Princeton University Press.  
 
